@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -179,9 +180,9 @@ button {
     height: 400px;
     width: 700px;
     border-radius: 15px;
-    -webkit-box-shadow: 0px 3px 7px 5px rgba(209, 209, 209, 0.52);
-    -moz-box-shadow: 0px 3px 7px 5px rgba(209, 209, 209, 0.52);
-    box-shadow: 0px 3px 7px 5px rgba(209, 209, 209, 0.52)
+    -webkit-box-shadow: 0px 3px 7px 5px rgba(190, 244, 246, 0.52);
+    -moz-box-shadow: 0px 3px 7px 5px rgba(190, 244, 246, 0.52);
+    box-shadow: 0px 3px 7px 5px rgba(190, 244, 246, 0.52)
 }
 
 .question {
@@ -232,6 +233,10 @@ label {
     box-shadow: -1px 1px 5px 3px rgba(0, 164, 224, 1);
 }
 
+.score {
+    font-size: 40px;
+}
+
 .option-container {
     margin: 40px auto;
     font-size: 22px;
@@ -265,18 +270,31 @@ input[type="radio"] {
 .modal {
     position: relative;
     font-family: 'Montserrat', sans-serif;
-    background-color: white;
+    background-color: #c5f4ff;
     width: 70%;
     height: 40%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 }
 
 .explanation {
-    font-size: 13px;
-    width: 70%;
+    font-size: 18px;
+    width: 80%;
+    padding: 15px;
+    border: 1px solid black;
+    background: #022859;
+    color: #6BD9F2;
+    font-weight: 500;
+    border-radius: 20px;
+    -webkit-box-shadow: -1px 1px 5px 3px rgba(55, 133, 189, 0.69);
+    -moz-box-shadow: -1px 1px 5px 3px rgba(55, 133, 189, 0.69);
+    box-shadow: -1px 1px 5px 3px rgba(55, 133, 189, 0.69);
+}
+
+.title {
+    font-size: 22px;
 }
 
 .modal-close {
@@ -285,4 +303,31 @@ input[type="radio"] {
     right: 10px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.answer {
+    font-size: 30px;
+    border: 1px solid black;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+    font-weight: bolder;
+}
+
+.correct {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    -webkit-box-shadow: inset -1px 2px 5px 4px rgba(21, 87, 37, 0.4);
+    -moz-box-shadow: inset -1px 2px 5px 4px rgba(21, 87, 37, 0.4);
+    box-shadow: inset -1px 2px 5px 4px rgba(21, 87, 37, 0.4);
+}
+
+.wrong {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    -webkit-box-shadow: inset -1px 2px 5px 4px rgba(250, 115, 115, 0.4);
+    -moz-box-shadow: inset -1px 2px 5px 4px rgba(250, 115, 115, 0.4);
+    box-shadow: inset -1px 2px 5px 4px rgba(250, 115, 115, 0.4);
 }

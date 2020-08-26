@@ -5,9 +5,12 @@ var leftBtn = document.getElementById('left');
 var rightBtn = document.getElementById('right');
 var answer = document.querySelector('.answer');
 var explanation = document.querySelector('.explanation');
+var scoreBoard = document.getElementById("scoreDisplay");
 var checkedOption;
 var Optionlist = document.getElementsByClassName('option');
 var quiz;
+var ls_keys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+var index = 0;
 const quizQues = async function() {
     const res = await fetch("./quiz.json");
     const num = pageNum.textContent;
@@ -16,6 +19,7 @@ const quizQues = async function() {
     quizDisplay(num);
     chooseOption();
     modalDisplay(Number(pageNum.textContent));
+    checkedButton();
 }
 
 function sideNavList() {
@@ -30,19 +34,23 @@ function modalDisplay(option) {
     var modalBtn = document.querySelector('#submitBtn');
     var modalBg = document.querySelector(".modal-bg");
     var close = document.querySelector(".modal-close");
-    var answerIndex = quiz[0].answer;
+    var answerIndex = quiz[option - 1].answer;
     var expl = quiz[option - 1].explanation;
-    explanation.innerHTML = '<strong class="title">Explanation </strong>' + expl;
+    explanation.innerHTML = '<strong class="title">Explanation: </strong>' + expl;
     modalBtn.addEventListener('click', () => {
         chooseOption();
+        sessionStorage.setItem(ls_keys[pageNum.textContent - 1], checkedOption);
         modalBg.classList.add('bg-active');
-        console.log(checkedOption);
         if (checkedOption === quiz[option - 1].options[answerIndex]) {
             var output = "Correct Answer";
-            answer.innerHTML = output;
+            answer.innerHTML = '<i class="far fa-check-circle"></i>  ' + output;
+            answer.classList.add('correct');
+            answer.classList.remove('wrong');
         } else {
-            var output = "InCorrect Answer";
-            answer.innerHTML = output;
+            var output = "Incorrect Answer";
+            answer.innerHTML = '<i class="far fa-times-circle"></i>  ' + output;
+            answer.classList.remove('correct');
+            answer.classList.add('wrong');
         }
     });
     close.addEventListener('click', () => {
@@ -56,7 +64,7 @@ function quizDisplay(option) {
     var optionStr = '<div class="option-container">';
     for (var i = 0; i < optionLength; i++) {
         var optionData = quiz[option - 1].options[i + 1];
-        optionStr += `<div class="options"><input class='option' type="radio" name="options" value='${quiz[option - 1].options[i + 1]}'>   <label class='option${i+1}'>${quiz[option - 1].options[i + 1]}</label></div><br>`;
+        optionStr += `<div class="options"><input class='option question${i+1}' id='q${option}_op${i+1}' type="radio" name="options" value='${quiz[option - 1].options[i + 1]}'>   <label class='option${i+1}'>${quiz[option - 1].options[i + 1]}</label></div><br>`;
     }
     optionStr += "</div>"
     output += optionStr;
@@ -67,10 +75,33 @@ function chooseOption() {
     for (var i = 0; i < Optionlist.length; i++) {
         if (Optionlist[i].checked) {
             checkedOption = Optionlist[i].value;
-            console.log(Optionlist[i]);
         }
     }
 
+}
+
+function calcScore() {
+    var items = [];
+    var score = 0;
+    for (var i = 0; i < sessionStorage.length - 1; i++) {
+        items[i] = sessionStorage.getItem(ls_keys[i]);
+        if (items[i] === quiz[i].options[quiz[i].answer]) {
+            score++;
+        }
+    }
+    displayScore(score);
+}
+
+function checkedButton() {
+    if (sessionStorage.getItem(`q${pageNum.textContent}`)) {
+        var selected = sessionStorage.getItem(`q${pageNum.textContent}`);
+        console.log(document.querySelector("input[value='" + selected + "']"));
+        document.querySelector(`input[value="${selected}"]`).checked = true;
+    }
+}
+
+function displayScore(score) {
+    scoreBoard.innerText = score;
 }
 
 function pageNav() {
@@ -81,6 +112,7 @@ function pageNav() {
             num--;
             pageNum.textContent = num;
             quizQues();
+            calcScore();
         } else {
             return;
         }
@@ -91,6 +123,7 @@ function pageNav() {
             num++;
             pageNum.textContent = num;
             quizQues();
+            calcScore();
         } else {
             return;
         }
