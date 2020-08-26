@@ -1,0 +1,119 @@
+[{
+        "question": "How is COVID-19 passed on?",
+        "options": {
+            "1": "Through droplets that come from your mouth and nose when you cough or breathe out",
+            "2": "In sexual fluids, including semen, vaginal fluids or anal mucous",
+            "3": "By drinking unclean water",
+            "4": "All of the above"
+        },
+        "answer": "1",
+        "img": "https://i0.wp.com/cdn-prod.medicalnewstoday.com/content/images/articles/327/327142/a-man-with-one-of-the-types-of-coughs.jpg?w=1155&h=1444",
+        "explanation": "When a person with COVID-19 coughs, breathes out or sneezes, droplets come out from their nose and mouth which can contain the virus. These can be breathed in by people who are nearby or land on surfaces which other people can then touch. Regularly washing your hands and keeping your distance from others is the best way to prevent COVID-19."
+    },
+    {
+        "question": "What are the common symptoms of COVID-19?",
+        "options": {
+            "1": "A new and continuous cough",
+            "2": "Fever",
+            "3": "Tiredness",
+            "4": "All of the above"
+        },
+        "answer": "4",
+        "img": "https://www.businessinsider.in/photo/74960334/how-to-check-coronavirus-symptoms-at-home.jpg?imgsize=110772",
+        "explanation": "COVID-19 is usually marked by a new and continuous cough, but some people get other symptoms too including tiredness, a fever and flu-like symptoms including headaches, runny nose and a sore throat. If you’re finding it hard to breathe or your symptoms don’t improve after 7 days, call your local health service straight away."
+    },
+    {
+        "question": "There are currently vaccines for the following coronaviruses:",
+        "options": {
+            "1": "SARS",
+            "2": "MERS",
+            "3": "SARS and MERS",
+            "4": "None of the above"
+        },
+        "answer": "4",
+        "img": "https://news.usc.edu/files/2020/06/covid_vaccine_stock-824x549.jpg",
+        "explanation": "At this time, there are no approved vaccines for SARS or MERS."
+    },
+    {
+        "question": "What other viruses belong to the coronavirus family?",
+        "options": {
+            "1": "SARS",
+            "2": "SARS and influenza",
+            "3": "SARS and MERS",
+            "4": "SARS and HIV"
+        },
+        "answer": "3",
+        "img": "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "explanation": "Before the current pandemic, there were two known types of coronavirus that could prove more harmful, and potentially even fatal: MERS-CoV (the coronavirus that causes Middle East Respiratory Syndrome, or MERS) and SARS-CoV (the coronavirus that causes severe acute respiratory syndrome, or SARS, pictured at right). SARS - CoV - 2 is the third type of this kind to be discovered"
+
+    },
+    {
+        "question": "Can washing your hands protect you from COVID-19?",
+        "options": {
+            "1": "Yes – but only if you use a strong bleach",
+            "2": "Yes – normal soap and water or hand sanitizer is enough",
+            "3": "No – Washing your hands doesn’t stop COVID-19",
+            "4": "None of the above"
+        },
+        "answer": "2",
+        "img": "https://images.unsplash.com/photo-1580377968154-e234b38fcf9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+        "explanation": "Washing your hands regularly is one of the best way to avoid getting or passing on COVID-19. It’s important to keep washing your hands throughout the day especially before and after going out. To wash your hands properly you need to get every spot. Make sure you wash them for at least 40 seconds if you are using soap and water, and for at least 20 seconds if you’re using hand sanitizer."
+    },
+    {
+        "question": "Are people living with HIV always more at risk?",
+        "options": {
+            "1": "Yes – people with HIV have weaker immune systems",
+            "2": "No – people who adhere to antiretroviral treatment (ART) and have a high CD4 count aren’t more at  risk"
+        },
+        "answer": "2",
+        "img": "https://images.unsplash.com/photo-1597062323690-ad8c06a6f8f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80",
+        "explanation": "There’s no evidence that people living with HIV who are adhering to effective antiretroviral treatment (ART), have high CD4 counts and are otherwise well, are more likely to get COVID-19. There’s also no evidence that these people are more likely to become seriously ill if they do get the COVID-19. The people who need to be more careful are those with a low CD4 count (<200 copies/cell), a high viral load, or those who have had a recent opportunistic infection. If this applies to you speak to your health care worker for more advice."
+    },
+    {
+        "question": "When should fabric face masks be worn?",
+        "options": {
+            "1": "On public transport",
+            "2": "In confined or crowded spaces",
+            "3": "In small shops",
+            "4": "All of the Above"
+        },
+        "img": "https://images.unsplash.com/photo-1597666953571-8b85a0159483?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
+        "answer": "4",
+        "explanation": "<p>The World Health Organisation now recommends using face masks when you are not able to stay at least 1 meter away from others. This includes when you’re on public transport, inside shops, or any other time when you’re in a confined or crowded space.</p><p>This is because we now have evidence that some people who get COVID-19 don’t get any symptoms but can still pass the virus on. Wearing fabric masks prevent these asymptomatic and seemingly healthy people from passing on the virus in public spaces. If you do have symptoms for COVID-19, you still need to stay home and self-isolate - wearing a mask is not enough.</p>"
+    },
+    {
+        "question": "Can COVID-19 be cured?",
+        "options": {
+            "1": "Yes – Hot drinks can cure COVID-19",
+            "2": "No – COVID-19 is a death sentence",
+            "3": "No – but most people get better by themselves"
+        },
+        "answer": "3",
+        "img": "https://images.unsplash.com/photo-1585108592681-d0db82bab204?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+        "explanation": "<p>Most people who get COVID-19 will recover by themselves, normally within 14 days. Some people who get more seriously ill with COVID-19 may need hospital care to help them breathe. For a small percentage of people COVID-19 can be fatal. If your symptoms don’t get better after 7 days, you are finding it hard to cope, or if at any point you have difficulty breathing you should call your local health service straight away.</p>"
+    },
+    {
+        "question": "Which of the following is an example of physical distancing?",
+        "options": {
+            "1": "You stop going to crowded places and visiting other people’s houses",
+            "2": "You stop talking to the people you live with",
+            "3": "You stop speaking to your friends on the phone"
+        },
+        "img": "https://images.unsplash.com/photo-1597854721399-82da0b1a8125?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1426&q=80",
+        "answer": "1",
+        "explanation": "<p>To slow down the spread of COVID-19 people are being asked to reduce the amount of time that they spend with other people and the number of people they meet in a day. The exact advice on how to do this will vary depending on where in the world you live. In some places, people have been asked to stop shaking hands and avoid large gatherings. Other places are telling people to stay at home completely and only leave the house to exercise, shop for essentials and go to work (if you can’t work at home).</p><p>You can still keep in contact with friends and family over the phone or by other means. This is a way to maintain good wellbeing and mental health.</p>"
+    },
+    {
+        "question": "How can people living with HIV protect themselves from COVID-19?",
+        "options": {
+            "1": "Wash their hands regularly and follow the physical distancing advice",
+            "2": "Keep taking their antiretroviral treatment",
+            "3": "Exercise regularly, eat well and look after their mental health",
+            "4": "All of the above"
+        },
+        "answer": "4",
+        "img": "https://images.unsplash.com/photo-1598039229216-30a5afc37046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+        "explanation": "<p>People living with HIV should follow the general advice for example washing their hands regularly. It’s also important to keep taking antiretroviral treatment as prescribed. Exercising, eating healthily and getting good sleep are ways to boost your immune system so that you stay healthy.</p><p>COVID-19 can also make lots of people feel anxious, so it’s important to look after your mental health too. Keep in touch with your friends and family online or over the phone, do things that you enjoy and talk how you are feeling. We all need to support each other during this time.</p>"
+    }
+
+]
