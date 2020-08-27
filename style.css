@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -36,7 +37,7 @@ body {
 }
 
 nav {
-    height: 15vh;
+    height: 25vh;
     width: 100%;
     background: #010D26;
     color: #6BD9F2;
@@ -60,7 +61,31 @@ nav {
     flex-direction: column;
     height: 100%;
 }
-
+.intro
+{
+    height: 85vh;
+    text-align: center;
+}
+.intro-container
+{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height:50%;
+    margin: 10% auto;
+}
+.form-group>label
+{
+    font-size: 25px;
+    color: #fff;
+}
+input[type='text']
+{
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
 .header {
     text-align: center;
     font-size: 40px;
@@ -98,7 +123,7 @@ section {
     width: max-content;
 }
 
-#submitBtn {
+#submitBtn,#start {
     border: none;
     outline: none;
     background: rgb(36, 164, 238);
@@ -114,6 +139,7 @@ button {
     border: none;
     outline: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #left,
@@ -140,24 +166,24 @@ button {
     z-index: 1;
     top: 0;
     right: 0%;
-    background-color: #111;
+    background-color: #0468BF;
     opacity: 0.9;
     overflow-x: hidden;
     padding-top: 60px;
-    transition: 0.5s;
+    transition: 1.1s;
 }
 
 .side-nav a {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
-    font-size: 22px;
-    color: #ccc;
+    font-size: 18px;
+    color: #fff;
     display: block;
-    transition: 0.3s;
+    transition: 0.7s;
 }
 
 .side-nav a:hover {
-    color: #fff;
+    color: #010D26;
 }
 
 .side-nav .btn-close {
@@ -239,7 +265,10 @@ label {
 .score {
     font-size: 40px;
 }
-
+.participant
+{
+    font-size: 30px;
+}
 .option-container {
     margin: 40px auto;
     font-size: 22px;

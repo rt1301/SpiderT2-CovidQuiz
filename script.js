@@ -6,17 +6,42 @@ var rightBtn = document.getElementById('right');
 var answer = document.querySelector('.answer');
 var explanation = document.querySelector('.explanation');
 var scoreBoard = document.getElementById("scoreDisplay");
+var nameDisplay = document.getElementById("nameDisplay");
 var checkedOption;
 var Optionlist = document.getElementsByClassName('option');
 var quiz;
+var quizArea = document.querySelector(".quiz-area");
+var intro = document.querySelector('.intro');
+var nameInput = document.getElementById('name');
+var startBtn  = document.getElementById("start");
+var name;
+var answerLink;
 var ls_keys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
 var index = 0;
+var start = true;
+var burger = document.querySelector('.burger');
+var closeBtn = document.querySelector('.btn-close');
+function startQuiz()
+{
+    nameInput.addEventListener('input',()=>{
+        name = nameInput.value;
+    });
+    startBtn.addEventListener('click',()=>{
+        intro.classList.add('hide');
+        quizArea.classList.remove('hide');
+    });
+}
+startQuiz();
 const quizQues = async function() {
-    const res = await fetch("./quiz.json");
-    const num = pageNum.textContent;
-    quiz = await res.json();
-    sideNavList();
-    quizDisplay(num);
+    if(start)
+    {
+        const res = await fetch("./quiz.json");
+        quiz = await res.json();
+        shuffle(quiz);
+        sideNavList();
+        start = false;
+    }
+    quizDisplay(pageNum.textContent);
     chooseOption();
     modalDisplay(Number(pageNum.textContent));
     checkedButton();
@@ -25,17 +50,46 @@ const quizQues = async function() {
 function sideNavList() {
     for (var i = 0; i < quiz.length; i++) {
         var link = document.createElement('a');
-        link.textContent = `${i+1}. ${quiz[i].question}`;
+        link.innerHTML = `<span id='q${i+1}' class='nav-index'>${i+1}.</span>  ${quiz[i].question}`;
         sideMenu.appendChild(link);
     }
+    burger.addEventListener('click',()=>{
+        sideMenu.style.width = '400px';
+        document.querySelector('section').style.marginRight = '400px';
+    });
+    closeBtn.addEventListener('click',()=>{
+        sideMenu.style.width = '0px';
+        document.querySelector('section').style.marginRight = '0px';
+    });
 }
-
+// Fisher-Yates Shuffle Algorithm
+function shuffle(array) 
+{
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+}
 function modalDisplay(option) {
     var modalBtn = document.querySelector('#submitBtn');
     var modalBg = document.querySelector(".modal-bg");
     var close = document.querySelector(".modal-close");
     var answerIndex = quiz[option - 1].answer;
     var expl = quiz[option - 1].explanation;
+    answerLink = document.getElementById(`q${option}`);
+    console.log(answerLink);
     explanation.innerHTML = '<strong class="title">Explanation: </strong>' + expl;
     modalBtn.addEventListener('click', () => {
         chooseOption();
@@ -45,14 +99,19 @@ function modalDisplay(option) {
         {
             calcScore();
             document.querySelector('.score').classList.remove('hide');
+            document.querySelector('.participant').classList.remove('hide');
         }
         if (checkedOption === quiz[option - 1].options[answerIndex]) {
             var output = "Correct Answer";
             answer.innerHTML = '<i class="far fa-check-circle"></i>  ' + output;
+            answerLink.style.color = '#155724';
+            answerLink.style.background = '#d4edda';
             answer.classList.add('correct');
             answer.classList.remove('wrong');
         } else {
             var output = "Incorrect Answer";
+            answerLink.style.color = '#721c24';
+            answerLink.style.background = '#f8d7da';
             answer.innerHTML = '<i class="far fa-times-circle"></i>  ' + output;
             answer.classList.remove('correct');
             answer.classList.add('wrong');
@@ -60,6 +119,7 @@ function modalDisplay(option) {
     });
     close.addEventListener('click', () => {
         modalBg.classList.remove('bg-active');
+        answerLink = '';
     });
 }
 
@@ -103,14 +163,13 @@ function calcScore() {
 function checkedButton() {
     if (sessionStorage.getItem(`q${pageNum.textContent}`)) {
         var selected = sessionStorage.getItem(`q${pageNum.textContent}`);
-        console.log(document.querySelector("input[value='" + selected + "']"));
         document.querySelector(`input[value="${selected}"]`).checked = true;
     }
 }
 
 function displayScore(score) {
     scoreBoard.innerText = score;
-    
+    nameDisplay.innerText = name;
 }
 
 function pageNav() {

@@ -14,23 +14,38 @@
         <div class="container">
             <div class="header">The COVID-19 Quiz</div>
             <div class="subhead">Take the quiz below to test your Covid-19 knowledge</div>
+            <div class="participant hide">Participant: <span id="nameDisplay"></span></div>
             <div class="score hide">Score is: <span id="scoreDisplay">0</span></div>
             <div class="burger"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
     <div id="side-menu" class="side-nav">
-        <a href="#" class="btn-close" onclick="closeSideMenu()">&times;</a>
+        <a href="#" class="btn-close">&times;</a>
     </div>
     <section>
-        <div id="main">
+        <div class="intro">
+            <div class="intro-container">
+                <div class="subhead">To take the quiz click on the below Button</div>
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" autocomplete="off" required>
+                    <div class="submit">
+                        <button type="submit" id="start" style="padding:10px;">Start the Quiz</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="submit">
-            <button id='submitBtn'>Submit</button>
-        </div>
-        <div class="page-navigation">
-            <button id="left"><i class="fas fa-angle-left"></i></button>
-            <div id="page-num">1</div>
-            <button id="right"><i class="fas fa-angle-right"></i></button>
+        <div class="quiz-area hide">
+            <div id="main">
+            </div>
+            <div class="submit">
+                <button id='submitBtn'>Submit</button>
+            </div>
+            <div class="page-navigation">
+                <button id="left"><i class="fas fa-angle-left"></i></button>
+                <div id="page-num">1</div>
+                <button id="right"><i class="fas fa-angle-right"></i></button>
+            </div>
         </div>
     </section>
     <div class="modal-bg">
