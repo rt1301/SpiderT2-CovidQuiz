@@ -41,6 +41,11 @@ function modalDisplay(option) {
         chooseOption();
         sessionStorage.setItem(ls_keys[pageNum.textContent - 1], checkedOption);
         modalBg.classList.add('bg-active');
+        if(sessionStorage.length === 11)
+        {
+            calcScore();
+            document.querySelector('.score').classList.remove('hide');
+        }
         if (checkedOption === quiz[option - 1].options[answerIndex]) {
             var output = "Correct Answer";
             answer.innerHTML = '<i class="far fa-check-circle"></i>  ' + output;
@@ -89,7 +94,10 @@ function calcScore() {
             score++;
         }
     }
-    displayScore(score);
+    if(sessionStorage.length === 11)
+    {
+        displayScore(score);
+    }
 }
 
 function checkedButton() {
@@ -102,6 +110,7 @@ function checkedButton() {
 
 function displayScore(score) {
     scoreBoard.innerText = score;
+    
 }
 
 function pageNav() {

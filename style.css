@@ -41,7 +41,10 @@ nav {
     background: #010D26;
     color: #6BD9F2;
 }
-
+.hide
+{
+    display: none;
+}
 .burger {
     position: absolute;
     z-index: 0;
@@ -280,9 +283,9 @@ input[type="radio"] {
 }
 
 .explanation {
-    font-size: 18px;
+    font-size: 15px;
     width: 80%;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid black;
     background: #022859;
     color: #6BD9F2;
