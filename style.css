@@ -52,8 +52,21 @@ nav {
     top: 5vh;
     right: 5%;
     font-size: 30px;
+    cursor: pointer;
 }
-
+div.time
+{
+ color: white;
+ font-size: 2rem;
+ font-weight: normal;
+ text-align: center;
+ padding-bottom: 0;
+ margin-bottom: 0;
+ background-color: #022859;
+ transition: all 0.3s;
+ display: flex;
+ justify-content: space-around;
+}
 .container {
     display: flex;
     justify-content: space-around;
@@ -94,6 +107,7 @@ input[type='text']
 
 section {
     height: 85vh;
+    transition: margin-right 0.7s;
 }
 
 #page-num {
@@ -123,7 +137,7 @@ section {
     width: max-content;
 }
 
-#submitBtn,#start {
+#submitBtn,#start,#restart {
     border: none;
     outline: none;
     background: rgb(36, 164, 238);
@@ -176,9 +190,11 @@ button {
 .side-nav a {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
     display: block;
+    width: 90%;
+    margin: auto;
     transition: 0.7s;
 }
 
@@ -197,7 +213,7 @@ button {
 #main {
     align-items: center;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 5% auto;
     width: max-content;
 }
 

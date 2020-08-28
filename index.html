@@ -18,6 +18,10 @@
             <div class="score hide">Score is: <span id="scoreDisplay">0</span></div>
             <div class="burger"><i class="fas fa-bars"></i></div>
         </div>
+        <div class="time">
+            <span id="timeTab"><strong>Time-> </strong> <span id="timer">120 : 00</span></span> 
+            <span id="bestScoreTab"><strong>Best Score-> </strong><span id="bestScore">0</span></span> 
+         </div>
     </nav>
     <div id="side-menu" class="side-nav">
         <a href="#" class="btn-close">&times;</a>
@@ -26,12 +30,22 @@
         <div class="intro">
             <div class="intro-container">
                 <div class="subhead">To take the quiz click on the below Button</div>
+                <div class="subhead">You will have 120secs to finish the quiz!</div>
                 <div class="form-group">
                     <label for="name">Name: </label>
                     <input type="text" name="name" id="name" autocomplete="off" required>
                     <div class="submit">
                         <button type="submit" id="start" style="padding:10px;">Start the Quiz</button>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="endGame hide">
+            <div class="intro-container">
+                <div class="header">Quiz Ended!</div>
+                <div class="subhead">To try again Click the below button</div>
+                <div class="submit">
+                    <button id="restart" style="padding:10px;">Try Again</button>
                 </div>
             </div>
         </div>

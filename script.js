@@ -16,22 +16,28 @@ var nameInput = document.getElementById('name');
 var startBtn  = document.getElementById("start");
 var name;
 var answerLink;
-var ls_keys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+var ss_keys = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+var bestScoreCount = [];
 var index = 0;
 var start = true;
+var sec,ms,count,sec_alt,ms_alt;
 var burger = document.querySelector('.burger');
 var closeBtn = document.querySelector('.btn-close');
+var bestScore = document.getElementById("bestScore");
+var end = false;
 function startQuiz()
 {
     nameInput.addEventListener('input',()=>{
         name = nameInput.value;
     });
     startBtn.addEventListener('click',()=>{
+        sessionStorage.clear();
         intro.classList.add('hide');
         quizArea.classList.remove('hide');
+        stopwatch.stop();
+        stopwatch.start();
     });
 }
-startQuiz();
 const quizQues = async function() {
     if(start)
     {
@@ -39,6 +45,7 @@ const quizQues = async function() {
         quiz = await res.json();
         shuffle(quiz);
         sideNavList();
+        sideNavEventListener();
         start = false;
     }
     quizDisplay(pageNum.textContent);
@@ -46,11 +53,78 @@ const quizQues = async function() {
     modalDisplay(Number(pageNum.textContent));
     checkedButton();
 }
+function endGame()
+{
+    if(end)
+    {
+        quizArea.classList.add('hide');
+        document.querySelector('.endGame').classList.remove('hide');
+        calcScore();
+        document.querySelector('.score').classList.remove('hide');
+        document.querySelector('.participant').classList.remove('hide');
+        stopwatch.stop();
+    }
+    end =  false;
+}
+// StopWatch Function
+var stopwatch = 
+{
+  start: function()
+  {
+    ms = 0;
+    sec = 120;
+    count = setInterval(function()
+    {
+      if(ms == 0)
+      {
+        ms = 99;
+        sec--;
+      }
+      else
+      {
+        ms--;
+      }
+      sec_alt = stopwatch.display(sec);
+      ms_alt = stopwatch.display(ms);
 
+      stopwatch.update(sec_alt + ":" + ms_alt);
+      if((sec == 0 && ms == 0) || (sessionStorage.length === 10))
+    {
+        console.log('stop');
+        end = true;
+        endGame();
+        stopwatch.stop();
+    }
+    },10);
+  },
+  stop: function()
+  {
+    clearInterval(count);
+  },
+  update: function(txt)
+  {
+    var temp = document.getElementById("timer");
+    temp.firstChild.nodeValue = txt;
+  },
+  display: function(time)
+  {
+    var temp;
+    if(time < 10)
+    {
+      temp = "0" + time;
+    }
+    else
+    {
+      temp = time;
+    }
+    return temp;
+    
+  }
+};
 function sideNavList() {
     for (var i = 0; i < quiz.length; i++) {
         var link = document.createElement('a');
-        link.innerHTML = `<span id='q${i+1}' class='nav-index'>${i+1}.</span>  ${quiz[i].question}`;
+        link.innerHTML = `<span id='q${i+1}' class='nav-index'>${i+1}</span>.  ${quiz[i].question}`;
         sideMenu.appendChild(link);
     }
     burger.addEventListener('click',()=>{
@@ -61,6 +135,20 @@ function sideNavList() {
         sideMenu.style.width = '0px';
         document.querySelector('section').style.marginRight = '0px';
     });
+}
+
+function sideNavEventListener()
+{
+    var navLinks = document.querySelectorAll(".side-nav a");
+    for(var i=1;i<navLinks.length;i++)
+    {
+        navLinks[i].addEventListener('click',(e)=>{
+            var index = e.srcElement.childNodes[0].innerText;
+            pageNum.textContent = index;
+            quizQues();
+            calcScore();
+        });
+    }
 }
 // Fisher-Yates Shuffle Algorithm
 function shuffle(array) 
@@ -89,29 +177,31 @@ function modalDisplay(option) {
     var answerIndex = quiz[option - 1].answer;
     var expl = quiz[option - 1].explanation;
     answerLink = document.getElementById(`q${option}`);
-    console.log(answerLink);
     explanation.innerHTML = '<strong class="title">Explanation: </strong>' + expl;
     modalBtn.addEventListener('click', () => {
         chooseOption();
-        sessionStorage.setItem(ls_keys[pageNum.textContent - 1], checkedOption);
+        sessionStorage.setItem(ss_keys[pageNum.textContent - 1], checkedOption);
         modalBg.classList.add('bg-active');
-        if(sessionStorage.length === 11)
+        if(sessionStorage.getItem(`q${pageNum.textContent}`))
+        {
+            var parent = document.getElementById(`q${pageNum.textContent}`).closest('a');
+            parent.style.border = '2px solid white';
+            parent.style.fontWeight = '700';
+        }
+        if(sessionStorage.length === 10 || end)
         {
             calcScore();
             document.querySelector('.score').classList.remove('hide');
             document.querySelector('.participant').classList.remove('hide');
+            endGame();
         }
         if (checkedOption === quiz[option - 1].options[answerIndex]) {
             var output = "Correct Answer";
             answer.innerHTML = '<i class="far fa-check-circle"></i>  ' + output;
-            answerLink.style.color = '#155724';
-            answerLink.style.background = '#d4edda';
             answer.classList.add('correct');
             answer.classList.remove('wrong');
         } else {
             var output = "Incorrect Answer";
-            answerLink.style.color = '#721c24';
-            answerLink.style.background = '#f8d7da';
             answer.innerHTML = '<i class="far fa-times-circle"></i>  ' + output;
             answer.classList.remove('correct');
             answer.classList.add('wrong');
@@ -148,14 +238,26 @@ function chooseOption() {
 function calcScore() {
     var items = [];
     var score = 0;
-    for (var i = 0; i < sessionStorage.length - 1; i++) {
-        items[i] = sessionStorage.getItem(ls_keys[i]);
+    for (var i = 0; i < sessionStorage.length; i++) {
+        items[i] = sessionStorage.getItem(ss_keys[i]);
         if (items[i] === quiz[i].options[quiz[i].answer]) {
             score++;
         }
     }
-    if(sessionStorage.length === 11)
+    if(sessionStorage.length === 10 || end)
     {
+        var storedScore = 0;
+        if(score.toString().length === 1)
+        {
+            storedScore = '0' + score.toString();
+        }
+        else
+        {
+            storedScore = score.toString();
+        }
+        var date = new Date();
+        var storedInfo = storedScore + ' ' + date.toString();
+        localStorage.setItem(name,storedInfo);
         displayScore(score);
     }
 }
@@ -170,6 +272,10 @@ function checkedButton() {
 function displayScore(score) {
     scoreBoard.innerText = score;
     nameDisplay.innerText = name;
+    bestScoreCount.push(localStorage.getItem(name).substring(0,2));
+    bestScoreCount.sort();
+    var best = bestScoreCount[bestScoreCount.length - 1];
+    bestScore.innerText = best;
 }
 
 function pageNav() {
@@ -182,6 +288,7 @@ function pageNav() {
             quizQues();
             calcScore();
         } else {
+            num = 0;
             return;
         }
     });
@@ -193,8 +300,38 @@ function pageNav() {
             quizQues();
             calcScore();
         } else {
+            num = 0;
             return;
         }
     });
 }
-pageNav();
+function restart()
+{
+    end = false;
+    document.querySelector('.endGame').classList.add('hide');
+    intro.classList.remove('hide');
+    nameDisplay.classList.add('hide');
+    scoreBoard.classList.add('hide');
+    sessionStorage.clear();
+    nameDisplay.classList.remove('hide');
+    scoreBoard.classList.remove('hide');
+    shuffle(quiz);
+    init();
+    start = false;
+}
+function init()
+{
+    count = 0;
+    sec = 10;
+    ms = 0;
+    score = 0;
+    start  = true;
+    pageNum.innerText = '1';
+    startQuiz();
+    pageNav();
+    document.getElementById("restart").addEventListener('click',()=>{
+        restart();
+        sessionStorage.clear();
+    })
+}
+init();
