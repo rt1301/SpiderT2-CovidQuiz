@@ -147,7 +147,10 @@ section {
     border-radius: 10px;
     color: white;
 }
-
+#submitBtn
+{
+    font-size: 15px;
+}
 button {
     padding: 20px;
     border: none;
@@ -222,8 +225,8 @@ button {
 }
 
 .quiz-img {
-    height: 400px;
-    width: 700px;
+    height: 300px;
+    width: 600px;
     border-radius: 15px;
     -webkit-box-shadow: 0px 3px 7px 5px rgba(190, 244, 246, 0.52);
     -moz-box-shadow: 0px 3px 7px 5px rgba(190, 244, 246, 0.52);
@@ -233,7 +236,7 @@ button {
 .question {
     margin: 20px auto;
     padding: 10px;
-    font-size: 30px;
+    font-size: 25px;
     width: max-content;
     border-radius: 25px;
     background-color: #03318C;
@@ -287,7 +290,7 @@ label {
 }
 .option-container {
     margin: 40px auto;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 input[type="radio"] {

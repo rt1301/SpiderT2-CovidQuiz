@@ -245,6 +245,19 @@ function calcScore() {
     }
     if(sessionStorage.length === 10 || end)
     {
+        var time = sec;
+        if(time >=90)
+        {
+            score = score*5;
+        }
+        else if(time >=70)
+        {
+            score = score*3;
+        }
+        else if(time>=50)
+        {
+            score = score*2;
+        }
         var storedScore = 0;
         if(score.toString().length === 1)
         {
@@ -317,6 +330,10 @@ function restart()
     nameDisplay.classList.remove('hide');
     scoreBoard.classList.remove('hide');
     sideMenu.innerHTML = '<a href="#" class="btn-close">&times;</a>';
+    closeBtn.addEventListener('click',()=>{
+        sideMenu.style.width = '0px';
+        document.querySelector('section').style.marginRight = '0px';
+    });
     shuffle(quiz);
     init();
     start = false;
