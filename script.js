@@ -90,7 +90,6 @@ var stopwatch =
       stopwatch.update(sec_alt + ":" + ms_alt);
       if((sec == 0 && ms == 0) || (sessionStorage.length === 10))
     {
-        console.log('stop');
         end = true;
         endGame();
         stopwatch.stop();
@@ -291,6 +290,7 @@ function pageNav() {
             num = 0;
             return;
         }
+        return;
     });
     rightBtn.addEventListener('click', () => {
         if (Number(pageNum.textContent) < quiz.length) {
@@ -303,6 +303,7 @@ function pageNav() {
             num = 0;
             return;
         }
+        return;
     });
 }
 function restart()
@@ -315,6 +316,7 @@ function restart()
     sessionStorage.clear();
     nameDisplay.classList.remove('hide');
     scoreBoard.classList.remove('hide');
+    sideMenu.innerHTML = '<a href="#" class="btn-close">&times;</a>';
     shuffle(quiz);
     init();
     start = false;
@@ -328,10 +330,10 @@ function init()
     start  = true;
     pageNum.innerText = '1';
     startQuiz();
-    pageNav();
     document.getElementById("restart").addEventListener('click',()=>{
         restart();
         sessionStorage.clear();
     })
 }
+pageNav();
 init();
